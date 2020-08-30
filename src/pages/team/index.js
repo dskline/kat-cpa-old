@@ -1,27 +1,28 @@
-import React, { useLayoutEffect } from "react";
-import { graphql } from "gatsby";
-import SEO from "../../components/SEO";
-import Layout from "../../layouts/index";
+import React, { useLayoutEffect } from 'react'
+import { graphql } from 'gatsby'
+
+import SEO from '../../components/SEO'
+import Layout from '../../layouts/index'
 
 const Team = (props) => {
-  const teams = props.data.allMarkdownRemark.edges;
+  const teams = props.data.allMarkdownRemark.edges
 
   useLayoutEffect(() => {
-    const teamContent = document.querySelectorAll(".team-content");
+    const teamContent = document.querySelectorAll('.team-content')
     teamContent.forEach((element) => {
       if (element.clientHeight > 400) {
-        element.classList.add("overflow-hidden");
+        element.classList.add('overflow-hidden')
       }
-    });
-  });
+    })
+  })
 
   return (
-    <Layout bodyClass="page-teams">
-      <SEO title="Team" />
-      <div className="intro">
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
+    <Layout bodyClass='page-teams'>
+      <SEO title='Team' />
+      <div className='intro'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-12'>
               <h1>Meet The Team</h1>
               <p>
                 Our team of qualified accountants and financial consultants can
@@ -32,38 +33,39 @@ const Team = (props) => {
         </div>
       </div>
 
-      <div className="container pb-6">
-        <div className="row">
+      <div className='container pb-6'>
+        <div className='row'>
           {teams.map((edge) => (
             <div
               key={edge.node.frontmatter.path}
-              className="col-12 col-md-6 mb-1"
+              className='col-12 col-md-6 mb-1'
             >
-              <div className="team card-two">
-                <div className="card-header">
-                  <div className="card-header-left">
+              <div className='team card-two'>
+                <div className='card-header'>
+                  <div className='card-header-left'>
                     {edge.node.frontmatter.image && (
-                      <div className="card-image">
+                      <div className='card-image'>
                         <img
                           alt={edge.node.frontmatter.title}
-                          className="img-fluid mb-2"
+                          className='img-fluid mb-2'
                           src={edge.node.frontmatter.image}
                         />
                       </div>
                     )}
                   </div>
-                  <div className="card-right">
-                    <h2 className="card-title">
+                  <div className='card-right'>
+                    <h2 className='card-title'>
                       {edge.node.frontmatter.title}
                     </h2>
-                    <ul className="card-meta">
+                    <ul className='card-meta'>
                       <li>
                         <strong>{edge.node.frontmatter.jobtitle}</strong>
                       </li>
                       <li>
                         <a
-                          target="_blank"
+                          target='_blank'
                           href={edge.node.frontmatter.linkedinurl}
+                          rel='noreferrer'
                         >
                           Linkedin
                         </a>
@@ -77,20 +79,20 @@ const Team = (props) => {
                   </div>
                 </div>
                 <div
-                  id={edge.node.frontmatter.title.replace(/\W/g, "_")}
-                  className="team-content"
+                  id={edge.node.frontmatter.name.replace(/\W/g, '_')}
+                  className='team-content'
                   dangerouslySetInnerHTML={{ __html: edge.node.html }}
                 />
-                <div className="see-more pt-3">
+                <div className='see-more pt-3'>
                   <button
-                    type="button"
-                    className="btn btn-link"
+                    type='button'
+                    className='btn btn-link'
                     onClick={() => {
                       document
                         .querySelector(
-                          "#" + edge.node.frontmatter.title.replace(/\W/g, "_")
+                          '#' + edge.node.frontmatter.name.replace(/\W/g, '_')
                         )
-                        .classList.remove("overflow-hidden");
+                        .classList.remove('overflow-hidden')
                     }}
                   >
                     See more...
@@ -102,8 +104,8 @@ const Team = (props) => {
         </div>
       </div>
     </Layout>
-  );
-};
+  )
+}
 
 export const query = graphql`
   query TeamQuery {
@@ -115,7 +117,7 @@ export const query = graphql`
         node {
           html
           frontmatter {
-            title
+            name
             path
             image
             jobtitle
@@ -126,6 +128,6 @@ export const query = graphql`
       }
     }
   }
-`;
+`
 
-export default Team;
+export default Team
