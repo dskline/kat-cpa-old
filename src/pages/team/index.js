@@ -54,7 +54,7 @@ const Team = (props) => {
                   </div>
                   <div className="card-right">
                     <h2 className="card-title">
-                      {edge.node.frontmatter.name}
+                      {edge.node.frontmatter.title}
                     </h2>
                     <ul className="card-meta">
                       <li>
