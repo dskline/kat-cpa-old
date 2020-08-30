@@ -1,11 +1,12 @@
 ---
-path: '/services/tax-preperation'
-title: 'Tax Preperation'
-date: 2018-11-18T12:33:46+10:00
-image: '/services/noun_1013177.png'
 draft: false
+path: /services/tax-preperation
+slug: tax-preparation
 featured: true
+date: 2018-11-18T12:33:46+10:00
+title: Tax Preparation
 weight: 2
+image: /services/noun_1013177.png
 ---
 
 Lorem markdownum **Achaica revolutaque amore**, penitus puppes nec furit,

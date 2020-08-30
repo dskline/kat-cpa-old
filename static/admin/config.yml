@@ -1,0 +1,43 @@
+backend:
+  name: git-gateway
+  branch: staging
+local_backend:
+  url: http://localhost:8081/api/v1
+media_folder: "images/uploads"
+collections:
+  - name: "team"
+    label: "Team"
+    folder: "/src/pages/team"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Job Title", name: "jobtitle", widget: "string" }
+      - { label: "Thumbnail Image", name: "image", widget: "image" }
+      - {
+          label: "LinkedIn URL",
+          name: "linkedinurl",
+          widget: "string",
+          default: "https://www.linkedin.com/in/rhodeskline",
+        }
+      - {
+          label: "Email",
+          name: "email",
+          widget: "string",
+          default: "rhodes.kline@kat-cpa.com",
+        }
+      - {
+          label: "Body (i.e. team member description)",
+          name: "body",
+          widget: "markdown",
+        }
+  - name: "services"
+    label: "Services"
+    folder: "/src/pages/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Service Name", name: "title", widget: "string" }
+      - { label: "Slug (URL path)", name: "slug", widget: "string" }
+      - { label: "Featured?", name: "featured", widget: "boolean" }
+      - { label: "Body", name: "body", widget: "markdown" }

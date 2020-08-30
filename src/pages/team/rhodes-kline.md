@@ -1,6 +1,6 @@
 ---
 path: '/team/rhodes-kline'
-title: 'Rhodes Kline'
+name: 'Rhodes Kline'
 date: 2020-08-03T10:47:58+10:00
 draft: false
 image: '/team/rhodes_kline.jpg'
