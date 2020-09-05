@@ -43,11 +43,25 @@ const Contact = () => {
               ref={formRef}
               className='pt-2 pb-4 text-sm'
               name='contact'
-              method='POST'
               data-netlify='true'
-              onSubmit={() => {
-                setIsContactFormSubmitted(true)
-                formRef.current.reset()
+              onSubmit={(e) => {
+                e.preventDefault()
+                const formData = new FormData(e)
+                fetch(e.currentTarget.getAttribute('action'), {
+                  method: 'POST',
+                  headers: {
+                    Accept: 'application/x-www-form-urlencoded;charset=UTF-8',
+                    'Content-Type':
+                      'application/x-www-form-urlencoded;charset=UTF-8',
+                  },
+                  body: formData,
+                })
+                  .then((res) => {
+                    setIsContactFormSubmitted(true)
+                    formRef.current.reset()
+                    return res
+                  })
+                  .catch(console.error)
               }}
             >
               <div className='form-group'>

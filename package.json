@@ -32,6 +32,11 @@
   "eslintConfig": {
     "extends": [
       "dskline"
-    ]
+    ],
+    "settings": {
+      "polyfills": [
+        "fetch"
+      ]
+    }
   }
 }
