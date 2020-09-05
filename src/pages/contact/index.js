@@ -27,13 +27,14 @@ const Contact = () => (
             {`You can also send us a quick message through our contact form below,
             and we'll get back to you as soon as possible.`}
           </div>
-          <form className='pt-2 pb-4 text-sm'>
-            <div
-              className='form-group'
-              data-netlify='true'
-              method='POST'
-              name='contact'
-            >
+          <form
+            className='pt-2 pb-4 text-sm'
+            name='contact'
+            method='POST'
+            data-netlify='true'
+            netlify
+          >
+            <div className='form-group'>
               <label htmlFor='name' className='font-weight-bold'>
                 Name
               </label>
