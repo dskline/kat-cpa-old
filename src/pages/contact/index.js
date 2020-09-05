@@ -45,7 +45,6 @@ const Contact = () => {
               name='contact'
               method='POST'
               data-netlify='true'
-              netlify
               onSubmit={(e) => {
                 e.preventDefault()
                 setIsContactFormSubmitted(true)
@@ -59,6 +58,7 @@ const Contact = () => {
                 <input
                   className='form-control'
                   id='name'
+                  name='name'
                   type='text'
                   placeholder='Name'
                   required='required'
@@ -72,6 +72,7 @@ const Contact = () => {
                 <input
                   className='form-control'
                   id='email'
+                  name='email'
                   type='email'
                   placeholder='john.doe@email.com'
                 />
@@ -83,6 +84,7 @@ const Contact = () => {
                 <input
                   className='form-control'
                   id='phone'
+                  name='phone'
                   type='tel'
                   placeholder='(123) 456-7890'
                   required='required'
@@ -96,6 +98,7 @@ const Contact = () => {
                 <textarea
                   className='form-control'
                   id='message'
+                  name='message'
                   rows='5'
                   placeholder='Message'
                   required='required'
