@@ -24,7 +24,7 @@ const Contact = () => {
       setIsSubmitting(true)
 
       const formData = new FormData(contactForm)
-      fetch(contactForm.getAttribute('action'), {
+      fetch('/', {
         method: 'POST',
         headers: {
           Accept: 'application/x-www-form-urlencoded;charset=UTF-8',
@@ -72,7 +72,7 @@ const Contact = () => {
               className='pt-2 pb-4 text-sm'
               name='contact'
               data-netlify='true'
-              action='/contact'
+              method='POST'
             >
               <div className='form-group'>
                 <label htmlFor='name' className='font-weight-bold'>
