@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Call from '../../components/Call'
 import SEO from '../../components/SEO'
@@ -8,13 +8,35 @@ const STRING_CONTACT_FORM_SUBMITTED = "Submitted! We'll be in touch soon."
 
 const Contact = () => {
   const [isContactFormSubmitted, setIsContactFormSubmitted] = useState(false)
-  const formRef = useRef()
 
   useEffect(() => {
     if (isContactFormSubmitted) {
       setTimeout(() => setIsContactFormSubmitted(false), 8000)
     }
   }, [isContactFormSubmitted])
+
+  useEffect(() => {
+    const contactForm = document.querySelector('#contact-form')
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault()
+      const formData = new FormData(contactForm)
+      fetch(contactForm.getAttribute('action'), {
+        method: 'POST',
+        headers: {
+          Accept: 'application/x-www-form-urlencoded;charset=UTF-8',
+          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+        },
+        body: new URLSearchParams(formData).toString(),
+      })
+        .then((res) => {
+          setIsContactFormSubmitted(true)
+          contactForm.reset()
+          return res
+        })
+        .catch(console.error)
+    })
+  }, [])
 
   return (
     <Layout bodyClass='page-contact'>
@@ -40,29 +62,11 @@ const Contact = () => {
             and we'll get back to you as soon as possible.`}
             </div>
             <form
-              ref={formRef}
               className='pt-2 pb-4 text-sm'
+              id='contact-form'
               name='contact'
               data-netlify='true'
-              onSubmit={(e) => {
-                e.preventDefault()
-                const formData = new FormData(e)
-                fetch(e.currentTarget.getAttribute('action'), {
-                  method: 'POST',
-                  headers: {
-                    Accept: 'application/x-www-form-urlencoded;charset=UTF-8',
-                    'Content-Type':
-                      'application/x-www-form-urlencoded;charset=UTF-8',
-                  },
-                  body: formData,
-                })
-                  .then((res) => {
-                    setIsContactFormSubmitted(true)
-                    formRef.current.reset()
-                    return res
-                  })
-                  .catch(console.error)
-              }}
+              action='#'
             >
               <div className='form-group'>
                 <label htmlFor='name' className='font-weight-bold'>
