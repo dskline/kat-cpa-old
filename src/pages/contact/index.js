@@ -17,7 +17,7 @@ const Contact = () => {
   }, [isContactFormSubmitted])
 
   useEffect(() => {
-    const contactForm = document.querySelector('form[data-netlify="true"]')
+    const contactForm = document.querySelector('form[name="contact"]')
 
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault()
