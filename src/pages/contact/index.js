@@ -72,8 +72,8 @@ const Contact = () => {
               className='pt-2 pb-4 text-sm'
               name='contact'
               data-netlify='true'
-              method='POST'
             >
+              <input type='hidden' name='form-name' value='contact' />
               <div className='form-group'>
                 <label htmlFor='name' className='font-weight-bold'>
                   Name
