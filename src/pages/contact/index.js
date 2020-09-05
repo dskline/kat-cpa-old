@@ -45,8 +45,7 @@ const Contact = () => {
               name='contact'
               method='POST'
               data-netlify='true'
-              onSubmit={(e) => {
-                e.preventDefault()
+              onSubmit={() => {
                 setIsContactFormSubmitted(true)
                 formRef.current.reset()
               }}
