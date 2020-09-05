@@ -1,2 +1,5 @@
-[context.production]
-  environment = { GATSBY_HIDE_TEAMS: true }
+[context.production.environment]
+  GATSBY_HIDE_TEAMS="true"
+
+[context.deploy-preview.environment]
+  GATSBY_HIDE_TEAMS="true"
