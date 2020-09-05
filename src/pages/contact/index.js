@@ -70,10 +70,9 @@ const Contact = () => {
             </div>
             <form
               className='pt-2 pb-4 text-sm'
-              id='contact-form'
               name='contact'
               data-netlify='true'
-              action='/contact/#contact-form'
+              action='/contact'
             >
               <div className='form-group'>
                 <label htmlFor='name' className='font-weight-bold'>
