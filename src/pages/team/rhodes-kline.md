@@ -5,7 +5,7 @@ name: Rhodes Kline
 date: 2020-08-03T10:47:58+10:00
 linkedinurl: https://www.linkedin.com/in/rhodeskline
 weight: 1
-jobtitle: Head of Accounting
+jobtitle: Principal Owner
 image: /team/rhodes_kline.jpg
 email: rhodes.kline@kat-cpa.com
 ---
