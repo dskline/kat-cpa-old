@@ -7,6 +7,7 @@ import Layout from '../../layouts/index'
 const STRING_CONTACT_FORM_SUBMITTED = "Submitted! We'll be in touch soon."
 
 const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [isContactFormSubmitted, setIsContactFormSubmitted] = useState(false)
 
   useEffect(() => {
@@ -20,6 +21,8 @@ const Contact = () => {
 
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault()
+      setIsSubmitting(true)
+
       const formData = new FormData(contactForm)
       fetch(contactForm.getAttribute('action'), {
         method: 'POST',
@@ -31,10 +34,14 @@ const Contact = () => {
       })
         .then((res) => {
           setIsContactFormSubmitted(true)
+          setIsSubmitting(false)
           contactForm.reset()
           return res
         })
-        .catch(console.error)
+        .catch((e) => {
+          console.error(e)
+          setIsSubmitting(false)
+        })
     })
   }, [])
 
@@ -66,7 +73,7 @@ const Contact = () => {
               id='contact-form'
               name='contact'
               data-netlify='true'
-              action='#'
+              action='/#contact-form'
             >
               <div className='form-group'>
                 <label htmlFor='name' className='font-weight-bold'>
@@ -131,7 +138,7 @@ const Contact = () => {
                   {STRING_CONTACT_FORM_SUBMITTED}
                 </div>
                 <button type='submit' className='btn btn-primary btn-xl'>
-                  Send
+                  {isSubmitting ? 'Submitting...' : 'Send'}
                 </button>
               </div>
             </form>
