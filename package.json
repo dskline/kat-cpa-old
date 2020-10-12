@@ -2,6 +2,9 @@
   "name": "kat-cpa",
   "version": "1.0.0",
   "author": "Spencer Kline (dskline1@gmail.com)",
+  "repository": {
+    "url": "https://github.com/dskline/kat-cpa"
+  },
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop -p 55151",
